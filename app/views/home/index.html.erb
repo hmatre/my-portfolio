@@ -474,6 +474,36 @@
 		gtag('js', new Date());
 
 		gtag('config', 'UA-135579335-1');
+
+		if($('.section.started').length) {
+				$('.top-menu ul li a').on('click', function(){
+					if($('.top-menu').hasClass('active')){
+						$('.top-menu').removeClass('active');
+						$('.menu-btn').removeClass('active');
+					}
+					var id = $(this).attr('href');
+					var h = parseFloat($(id).offset().top);
+					
+					$('body,html').animate({
+						scrollTop: h + 10
+					}, 800);
+					
+					return false;
+				});
+			}
+
+			/* Open Top Menu */
+			$('.page').on('click', '.menu-btn', function(){
+				if($('.top-menu').hasClass('active')){
+					$('.top-menu').removeClass('active');
+					$(this).removeClass('active');
+				} else {
+					$('.top-menu').addClass('active');
+					$(this).addClass('active');
+				}
+
+				return false;
+			});
 		</script>
 	</body>
 </html>
